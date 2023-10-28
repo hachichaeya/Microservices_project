@@ -1,0 +1,65 @@
+<div class="container">
+
+  <div class="dashboard-items">
+    <mat-card >
+      <mat-card-header>
+        <div class="example-header-image" mat-card-avatar><mat-icon class="customIconSize">person</mat-icon></div>
+        <mat-card-title>Membres</mat-card-title>
+        <mat-card-subtitle>Nombre des membres</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <h2>
+          {{membersCount}}
+        </h2>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" routerLink="/members">Consulter la liste des membres</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="dashboard-items">
+    <mat-card>
+      <mat-card-header>
+        <div class="example-header-image" mat-card-avatar><mat-icon class="customIconSize">library_books</mat-icon></div>
+        <mat-card-title>Publications</mat-card-title>
+        <mat-card-subtitle>Nombre des publications</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <h2>{{publicationCount}}</h2>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" routerLink="/publications">Consulter la liste des publications</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="dashboard-items">
+    <mat-card >
+      <mat-card-header>
+        <div class="example-header-image" mat-card-avatar><mat-icon class="customIconSize">event</mat-icon></div>
+        <mat-card-title>Evènements</mat-card-title>
+        <mat-card-subtitle>Nombre des évènements</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <h2>{{eventsCount}}</h2>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary"  routerLink="/eventsList">Consulter la liste des évènements</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="dashboard-items">
+    <mat-card >
+      <mat-card-header>
+        <div class="example-header-image" mat-card-avatar><mat-icon class="customIconSize">settings</mat-icon></div>
+        <mat-card-title>Outils</mat-card-title>
+        <mat-card-subtitle>Nombre des outils</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <h2>{{toolsCount}}</h2>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" mat-button routerLink="/tools">Consulter la liste des outils</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

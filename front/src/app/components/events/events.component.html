@@ -1,0 +1,19 @@
+<div class="container">
+  <form  (ngSubmit)="addEvent()" [formGroup]="form" class="form-bordered">
+    <h2 >Ajouter un évenement</h2>
+  <mat-card class="demo-inline-calendar-card">
+    <mat-calendar [(selected)]="selected"></mat-calendar>
+  </mat-card>
+
+      <mat-form-field appearance="legacy">
+        <input formControlName="lieuEvent" matInput placeholder="Lieu">
+      </mat-form-field>
+
+
+      <mat-form-field appearance="legacy">
+        <input formControlName="titreEvent" matInput placeholder="Titre">
+      </mat-form-field>
+
+    <button mat-raised-button color="primary" mat-button type="submit">Ajouter un évenement</button>
+  </form>
+</div>

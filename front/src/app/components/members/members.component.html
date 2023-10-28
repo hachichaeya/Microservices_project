@@ -1,0 +1,77 @@
+<div *ngIf="user.role=='Admin'" fxLayout="row" fxLayoutAlign="end center">
+  <button color="primary" mat-button routerLink="/addMember">
+    <mat-icon>add</mat-icon>
+    Ajouter un membre
+  </button>
+</div>
+
+<mat-form-field appearance="standard">
+  <mat-label>Filter</mat-label>
+  <input #input (keyup)="applyFilter($event)" matInput placeholder="Ex. ium">
+</mat-form-field>
+
+<table [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
+
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+  <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+
+
+  <ng-container matColumnDef="id">
+    <th *matHeaderCellDef mat-header-cell>ID</th>
+    <td *matCellDef="let element" mat-cell> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="cin">
+    <th *matHeaderCellDef mat-header-cell>CIN</th>
+    <td *matCellDef="let element" mat-cell> {{element.cin}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th *matHeaderCellDef mat-header-cell> NOM ET PRENOM</th>
+    <td *matCellDef="let element" mat-cell> {{element.nom}} {{element.prenom}}</td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="cv">
+    <th *matHeaderCellDef mat-header-cell>EMAIL</th>
+    <td *matCellDef="let element" mat-cell> {{element.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="type">
+    <th *matHeaderCellDef mat-header-cell> ENS/ETD</th>
+    <td *matCellDef="let element" mat-cell> {{element.typeMbr == 'etd' ? 'Etudiant' : 'Enseignant'}} {{element.encadrant!=null?'affecté à '+element.encadrant.nom+' '+element.encadrant.prenom:''}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="createdDate">
+    <th *matHeaderCellDef mat-header-cell>Date de naissance</th>
+    <td *matCellDef="let element" mat-cell> {{element.dateNaissance | date :'mediumDate'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="cc">
+
+    <th *matHeaderCellDef mat-header-cell>ACTIONS</th>
+    <td *matCellDef="let element" mat-cell>
+      <button *ngIf="element.typeMbr=='etd'&&user.role=='Admin'" color="primary" mat-button
+              routerLink="{{element.id}}/editStudent">
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button *ngIf="element.typeMbr=='ens'&&user.role=='Admin'" color="primary" mat-button
+              routerLink="{{element.id}}/editTeacher">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button (click)="ONDelete(element.id)" *ngIf="user.role=='Admin'" color="primary" mat-button>
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button *ngIf="element.typeMbr=='etd'&&user.role=='Admin'&&element.encadrant==null" color="primary" mat-button
+              routerLink="/affectation/{{element.id}}">
+        Affecter
+      </button>
+    </td>
+
+  </ng-container>
+
+
+</table>
+
+
